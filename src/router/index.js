@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
+    path: '/test',
     name: 'Test',
     component: Test 
   },
@@ -27,6 +27,11 @@ Vue.use(VueRouter)
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/',
+    name: 'Dashboard',
+    conponent: Dashboard
   },
 ]
 
