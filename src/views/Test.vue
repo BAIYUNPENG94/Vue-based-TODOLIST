@@ -2,9 +2,9 @@
   <div class="dashboard">
     <h1 class="subtitle-1 grey--text pa-4">Dashboard</h1>
 
-    <v-btn v-on="on" text small flat color="grey" @click="testGet()">
+    <v-btn v-on="on" text small flat color="grey" @click="testCreate()">
       <v-icon small left>folder</v-icon>
-      <span class="caption text-lowercase">By project name</span>
+      <span class="caption text-lowercase">Test Button</span>
     </v-btn>
 
   </div>
@@ -21,8 +21,8 @@ export default {
     },
     methods: {
         testGet() {
-            console.log("Test Function Triggered");
-            axios.get("http://192.168.2.125:8000/todo", {
+            console.log("Test Function Triggered [GET]");
+            axios.get("/todo", {
                 params: {}
             })
               .then(res => {
@@ -31,8 +31,52 @@ export default {
               .catch(err => {
                 console.log(err);
               })
-        }
+        },
+        testGetById(id) {
+            console.log("Test Function Triggered [GET BY ID]");
+            axios.get("/todo/" + id, {
+              params: {}
+            })
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+              })
+              .catch(err => {
+                console.log(err);
+              })
+        },
+        testCreate() {
+            console.log("Test Function Triggered [CREATE]");
+            axios.post("/todo", {
+              content: ["test Y", 1]
+            })
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+              })
+              .catch(err => {
+                console.log(err);
+              })
+        },
     },
+
+
+        //This shows how to use axios params
+        //testGetById() {
+        //    console.log("Test Function Triggered [GET BY ID]");
+        //    axios.get("http://192.168.2.120:8000/todo/id", {
+        //      params: {
+        //        id: 4,
+        //      }
+        //    })
+        //      .then(res => {
+        //        console.log(res);
+        //        console.log(res.data);
+        //      })
+        //      .catch(err => {
+        //        console.log(err);
+        //      })
+        //},
 }
 
 </script>
