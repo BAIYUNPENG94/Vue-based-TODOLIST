@@ -22,7 +22,7 @@ export default {
     methods: {
         testGet() {
             console.log("Test Function Triggered");
-            axios.get("http://192.168.2.120:8000/todo", {
+            axios.get("http://192.168.2.125:8000/todo", {
                 params: {}
             })
               .then(res => {
