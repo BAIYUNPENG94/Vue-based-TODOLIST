@@ -2,7 +2,7 @@
   <div class="dashboard">
     <h1 class="subtitle-1 grey--text pa-4">Dashboard</h1>
 
-    <v-btn v-on="on" text small flat color="grey" @click="testCreate()">
+    <v-btn v-on="on" text small flat color="grey" @click="testPut(2)">
       <v-icon small left>folder</v-icon>
       <span class="caption text-lowercase">Test Button</span>
     </v-btn>
@@ -21,42 +21,55 @@ export default {
     },
     methods: {
         testGet() {
-            console.log("Test Function Triggered [GET]");
-            axios.get("/todo", {
-                params: {}
+          console.log("Test Function Triggered [GET]");
+          axios.get("/todo", {
+              params: {}
+          })
+            .then(res => {
+              console.log(res.data);
             })
-              .then(res => {
-                console.log(res.data);
-              })
-              .catch(err => {
-                console.log(err);
-              })
+            .catch(err => {
+              console.log(err);
+            })
         },
         testGetById(id) {
-            console.log("Test Function Triggered [GET BY ID]");
-            axios.get("/todo/" + id, {
-              params: {}
+          console.log("Test Function Triggered [GET BY ID]");
+          axios.get("/todo/" + id, {
+            params: {}
+          })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
             })
-              .then(res => {
-                console.log(res);
-                console.log(res.data);
-              })
-              .catch(err => {
-                console.log(err);
-              })
+            .catch(err => {
+              console.log(err);
+            })
         },
         testCreate() {
-            console.log("Test Function Triggered [CREATE]");
-            axios.post("/todo", {
-              content: ["test Y", 1]
+          console.log("Test Function Triggered [CREATE]");
+          axios.post("/todo", {
+            content: ["test Y", 1]
+          })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
             })
-              .then(res => {
-                console.log(res);
-                console.log(res.data);
-              })
-              .catch(err => {
-                console.log(err);
-              })
+            .catch(err => {
+              console.log(err);
+            })
+        },
+        testPut(id) {
+          console.log("Test Function Triggered [PUT]");
+          axios.put("/todo/2" + id, {
+            content: ["test Z", 1]
+          })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+            })
+            .catch(err => {
+              console.log(err);
+            })
         },
     },
 
