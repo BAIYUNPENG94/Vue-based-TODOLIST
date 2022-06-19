@@ -2,7 +2,7 @@
   <div class="dashboard">
     <h1 class="subtitle-1 grey--text pa-4">Dashboard</h1>
 
-    <v-btn v-on="on" text small flat color="grey" @click="testPut(2)">
+    <v-btn v-on="on" text small flat color="grey" @click="testDelete(171)">
       <v-icon small left>folder</v-icon>
       <span class="caption text-lowercase">Test Button</span>
     </v-btn>
@@ -60,8 +60,8 @@ export default {
         },
         testPut(id) {
           console.log("Test Function Triggered [PUT]");
-          axios.put("/todo/2" + id, {
-            content: ["test Z", 1]
+          axios.put("/todo/" + id, {
+            content: ["test Z", 0]
           })
             .then(res => {
               console.log(res);
@@ -70,6 +70,17 @@ export default {
             .catch(err => {
               console.log(err);
             })
+        },
+        testDelete(id) {
+          console.log("Test Function Triggered [PUT]");
+          axios.delete("/todo/" + id)
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+              })
+              .catch(err => {
+                console.log(err);
+              })
         },
     },
 
