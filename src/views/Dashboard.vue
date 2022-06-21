@@ -55,12 +55,15 @@
 </template>
 
 <script>
-import db from "@/fb";
 
 export default {
   data() {
     return {
-      projects: []
+      projects: [],
+      testData: {
+
+      },
+      testDataColumn: [],
     };
   },
   methods: {
@@ -68,20 +71,6 @@ export default {
       this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
     }
   },
-  created() {
-    db.collection("projects").onSnapshot(res => {
-      const changes = res.docChanges();
-
-      changes.forEach(change => {
-        if (change.type === "added") {
-          this.projects.push({
-            ...change.doc.data(),
-            id: change.doc.id
-          });
-        }
-      });
-    });
-  }
 };
 </script>
 

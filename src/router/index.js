@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import Todolist from '../views/Todolist.vue'
 import Projects from '../views/Projects.vue'
 import Team from '../views/Team.vue'
 import Test from '../views/Test.vue'
@@ -8,6 +9,11 @@ import Test from '../views/Test.vue'
 Vue.use(VueRouter)
 
   const routes = [
+  {
+    path: '/',
+    name: 'Dashboard',
+    component: Dashboard
+  },
   {
     path: '/test',
     name: 'Test',
@@ -24,14 +30,9 @@ Vue.use(VueRouter)
     component: Team
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard
-  },
-  {
-    path: '/',
-    name: 'Dashboard',
-    conponent: Dashboard
+    path: '/todo',
+    name: 'TodoList',
+    component: Todolist
   },
 ]
 
