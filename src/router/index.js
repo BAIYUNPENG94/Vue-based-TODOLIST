@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import Todolist from '../views/Todolist.vue'
+import Calendar from '../views/Calendar.vue'
 import Projects from '../views/Projects.vue'
 import Team from '../views/Team.vue'
 import Test from '../views/Test.vue'
@@ -33,6 +34,11 @@ Vue.use(VueRouter)
     path: '/todo',
     name: 'TodoList',
     component: Todolist
+  },
+  {
+    path: '/todo/calendar',
+    name: 'Calendar',
+    component: Calendar
   },
 ]
 
