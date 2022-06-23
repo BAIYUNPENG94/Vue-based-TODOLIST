@@ -8,6 +8,8 @@
       <v-card-text>
         <v-form class="px-3" ref="form">
           <v-text-field label="Title" v-model="title" prepend-icon="hot_tub" :rules="inputRules"></v-text-field>
+          <v-text-field label = "Completeness" v-model="comp" prepend-icon="hot_tub" :rules="inputRules"></v-text-field>
+          <v-text-field label = "Piority" v-model="pior" prepend-icon="hot_tub" :rules="inputRules"></v-text-field>
           <v-textarea label="Information" v-model="content" prepend-icon="edit" :rules="inputRules"></v-textarea>
           <v-menu max-width="290">
             <template v-slot:activator="{ on }">
@@ -38,6 +40,8 @@ export default {
     return {
       title: "",
       content: "",
+      comp: "",
+      pior: "",
       due: null,
       inputRules: [v => v.length >= 3 || "Minimum length is 3 characters"],
       loading: false,
@@ -45,7 +49,7 @@ export default {
     };
   },
   methods: {
-    submit() {
+    submitFriebase() {
       if (this.$refs.form.validate()) {
         this.loading = true;
 
@@ -65,7 +69,21 @@ export default {
             this.$emit("projectAdded")
           });
       }
-    }
+    },
+    submitOracle() {
+      if (this.$refs.form.validate()) {
+        this.loading = true;
+        const newProject = [
+          this.title,
+          this.comp,
+          this.pior,
+          this.due,
+          this.person,
+          this.content,
+        ];
+
+      }
+    },
   },
   computed: {
     formattedDate() {
