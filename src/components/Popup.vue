@@ -23,7 +23,7 @@
             </template>
             <v-date-picker v-model="due"></v-date-picker>
           </v-menu>
-          <v-btn class="success mt-3" @click="submit" :loading="loading">Add project</v-btn>
+          <v-btn class="success mt-3" @click="submitOracle" :loading="loading">Add project</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
@@ -33,7 +33,7 @@
 <script>
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import db from "@/fb";
+import restAPI from "../APIs/RestAPIs";
 export default {
   name: "Popup",
   data() {
@@ -49,27 +49,6 @@ export default {
     };
   },
   methods: {
-    submitFriebase() {
-      if (this.$refs.form.validate()) {
-        this.loading = true;
-
-        const project = {
-          title: this.title,
-          content: this.content,
-          due: format(parseISO(this.due), "do MMM yyyy"),
-          person: "Jim.Bai",
-          status: "ongoing"
-        };
-
-        db.collection("projects")
-          .add(project)
-          .then(() => {
-            this.loading = false;
-            this.dialog = false;
-            this.$emit("projectAdded")
-          });
-      }
-    },
     submitOracle() {
       if (this.$refs.form.validate()) {
         this.loading = true;
@@ -81,7 +60,7 @@ export default {
           this.person,
           this.content,
         ];
-
+        restAPI.create(newProject);
       }
     },
   },
