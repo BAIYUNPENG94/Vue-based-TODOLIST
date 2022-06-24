@@ -28,7 +28,7 @@
       </v-card-text>
     </v-card>
   </v-dialog>
-</template>
+</template>    
 
 <script>
 import format from "date-fns/format";
@@ -49,7 +49,7 @@ export default {
     };
   },
   methods: {
-    async submitOracle() {
+    submitOracle() {
       if (this.$refs.form.validate()) {
         this.loading = true;
         const newProject = [
@@ -60,8 +60,7 @@ export default {
           this.person,
           this.content,
         ];
-        var res = await restAPI.create(newProject)
-        console.log(res);
+        restAPI.create(newProject);
       }
     },
   },

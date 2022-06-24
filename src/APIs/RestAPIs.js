@@ -26,19 +26,23 @@ function RestAPI() {
         console.log(err);
       })
     };
-    this.create = function(info) {
+    this.create = async function(info) {
+      var result;
       console.log("Function Triggered [CREATE]");
       console.log(info)
-      axios.post("/todo", {
+      await axios.post("/todo", {
         content: info,
       })
       .then(res => {
         console.log(res);
         console.log(res.data);
+        result = true;
       })
       .catch(err => {
         console.log(err);
+        result = false;
       })
+      return result;
     };
     this.put = function(id, info) {
       console.log("Test Function Triggered [PUT]");
