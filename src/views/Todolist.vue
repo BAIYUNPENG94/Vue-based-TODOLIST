@@ -39,9 +39,6 @@ export default {
           },
           { text: 'Completeness', value: 'comp' },
           { text: 'Priorty', value: 'poir' },
-          //{ text: 'Carbs (g)', value: 'carbs' },
-          //{ text: 'Protein (g)', value: 'protein' },
-          //{ text: 'Iron (%)', value: 'iron' },
       ],
       testData: [
           {
