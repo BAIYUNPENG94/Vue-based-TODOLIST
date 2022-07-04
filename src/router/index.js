@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import LoginPage from '../views/LoginPage.vue'
 import Todolist from '../views/Todolist.vue'
 import Calendar from '../views/Calendar.vue'
 import Projects from '../views/Projects.vue'
@@ -39,6 +40,11 @@ Vue.use(VueRouter)
     path: '/todo/calendar',
     name: 'Calendar',
     component: Calendar
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginPage
   },
 ]
 

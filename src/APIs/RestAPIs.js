@@ -34,7 +34,6 @@ function RestAPI() {
         content: info,
       })
       .then(res => {
-        console.log(res);
         console.log(res.data);
         result = true;
       })
@@ -42,6 +41,7 @@ function RestAPI() {
         console.log(err);
         result = false;
       })
+
       return result;
     };
     this.put = function(id, info) {

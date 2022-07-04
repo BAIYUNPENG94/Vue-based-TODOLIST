@@ -28,14 +28,14 @@
       </v-card-text>
     </v-card>
   </v-dialog>
-</template>    
+</template>
 
 <script>
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import restAPI from "../APIs/RestAPIs";
 export default {
-  name: "Popup",
+  name: "PopupCreate",
   data() {
     return {
       title: "",
@@ -49,7 +49,7 @@ export default {
     };
   },
   methods: {
-    submitOracle() {
+    async submitOracle() {
       if (this.$refs.form.validate()) {
         this.loading = true;
         const newProject = [
@@ -60,7 +60,8 @@ export default {
           this.person,
           this.content,
         ];
-        restAPI.create(newProject);
+        await restAPI.create(newProject);
+        this.loading = false;
       }
     },
   },

@@ -6,7 +6,7 @@
     </v-snackbar>
 
     <v-app-bar app flat>
-      <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon v-show="showNavIcon" class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light">Jim</span>
         <span>todo</span>
@@ -60,20 +60,22 @@
         </v-list-item>
       </v-list>
       <v-row align="center" justify="center" class="mt-5">
-        <Popup @projectAdded="snackbar=true" />
+        <PopupCreate @projectAdded="snackbar=true" />
       </v-row>
     </v-navigation-drawer>
   </nav>
 </template>
 
 <script>
-import Popup from "./Popup";
+import PopupCreate from "./PopCreate";
+import LoginData from '../Data/LoginData';
 
 export default {
-  components: { Popup },
+  components: { PopupCreate },
   data() {
     return {
       drawer: null,
+      showNavIcon: null,
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/" },
         { icon: "folder", text: "Projects", route: "/projects" },
@@ -81,6 +83,15 @@ export default {
       ],
       snackbar: false
     };
+  },
+  created() {
+    if (LoginData.loginFlag == 0) {
+      this.drawer = false;
+      this.showNavIcon = false;
+    } else {
+      this.drawer = true;
+      this.showNavIcon = true;
+    }
   }
 };
 </script>
