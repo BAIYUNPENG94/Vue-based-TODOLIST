@@ -53,11 +53,12 @@ export default {
       if (this.$refs.form.validate()) {
         this.loading = true;
         const newProject = [
+          3,
           this.title,
           this.comp,
           this.pior,
           this.due,
-          this.person,
+          "Jim",
           this.content,
         ];
         var res = await restAPI.create(newProject)
