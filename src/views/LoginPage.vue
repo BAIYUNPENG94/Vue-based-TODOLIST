@@ -22,6 +22,15 @@
           </template>
           <span>Sort by person's name</span>
         </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" text small flat color="grey" @click="sortBy('person')">
+              <v-icon small left>person</v-icon>
+              <span class="caption text-lowercase">TestButton</span>
+            </v-btn>
+          </template>
+          <span>Sort by person's name</span>
+        </v-tooltip>
       </v-row>
       <v-card class="px-3" flat v-for="project in projects" :key="project.title">
         <v-row :class="`pl-3 project ${project.status}`">
