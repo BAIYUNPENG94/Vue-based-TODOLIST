@@ -89,7 +89,7 @@ export default {
       this.drawer = false;
       this.showNavIcon = false;
     } else {
-      this.drawer = true;
+      this.drawer = null;
       this.showNavIcon = true;
     }
   }
