@@ -6,7 +6,7 @@
     <v-card>
       <v-card-title class="headline grey lighten-2" primary-title>Create Account</v-card-title>
       <v-card-text>
-        <v-form>
+        <v-form ref="form">
           <v-container fluid>
             <v-row>
               <v-col
@@ -56,6 +56,19 @@
                   @click:append="show3 = !show3"
                 ></v-text-field>
               </v-col>
+              <v-col
+                cols="12"
+                sm="12"
+              >
+                <v-btn
+                  elevation="2"
+                  block
+                  color="primary"
+                  @click="CreateUser"
+                >
+                  Create
+                </v-btn>
+              </v-col>
             </v-row>
           </v-container>
         </v-form>
@@ -67,7 +80,7 @@
 <script>
 //import format from "date-fns/format";
 //import parseISO from "date-fns/parseISO";
-//import restAPI from "../APIs/RestAPIs";
+import restAPI from "../APIs/RestAPIs";
 export default {
   data () {
     return {
@@ -84,6 +97,20 @@ export default {
         emailMatch: () => 1 < 2, //This rule added later
       },
     }
+  },
+  methods: {
+    async CreateUser() {
+      if (this.$refs.form.validate()) {
+        this.loading = true;
+        const newProject = [
+          this.userName,
+          this.password,
+          this.email,
+        ];
+        var res = await restAPI.createUser(newProject)
+        console.log(res);
+      }
+    },
   },
 }
 

@@ -68,6 +68,25 @@ function RestAPI() {
           console.log(err);
         })
     };
+    this.createUser = async function(info) {
+      var result;
+      console.log("Function Triggered [CREATE]");
+      console.log(info)
+      //This post url need to be changed in the future
+      await axios.post("/todo/user", {
+        content: info,
+      })
+      .then(res => {
+        console.log(res.data);
+        result = true;
+      })
+      .catch(err => {
+        console.log(err);
+        result = false;
+      })
+
+      return result;
+    };
 }
 
 const instance = new RestAPI();
