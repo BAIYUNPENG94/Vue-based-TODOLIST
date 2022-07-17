@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 function RestAPI() {
+//================= Dashboard Part =======================//
     this.get = function() {
       console.log("Function Triggered [GET]");
       axios.get("/todo", {
@@ -68,6 +69,9 @@ function RestAPI() {
           console.log(err);
         })
     };
+//=======================================================//
+
+//============ Create and Login Part ====================//
     this.createUser = async function(info) {
       var result;
       console.log("Function Triggered [CREATE]");
@@ -87,6 +91,8 @@ function RestAPI() {
 
       return result;
     };
+//=======================================================//
+
 }
 
 const instance = new RestAPI();

@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav id="nav">
     <v-snackbar v-model="snackbar" timeout="4000" top color="indigo">
       <span>Project has been already added.</span>
       <v-btn elevation="0" color="indigo white--text" @click="snackbar = false">Close</v-btn>
@@ -87,10 +87,14 @@ export default {
   created() {
     if (LoginData.loginFlag == 0) {
       this.drawer = false;
-      this.showNavIcon = false;
-    } else {
+      this.showNavIcon = false;   } else {
       this.drawer = null;
       this.showNavIcon = true;
+    }
+  },
+  mounted() {
+    if (LoginData.loginFlag == 0) {
+      document.getElementById('nav').style.display = 'none';
     }
   }
 };
