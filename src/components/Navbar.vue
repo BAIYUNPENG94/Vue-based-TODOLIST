@@ -103,9 +103,17 @@ export default {
   },
   updated() {
     if (LoginData.loginFlag == 0) {
-      document.getElementById("nav").class = "hide";
+      this.drawer = false;
+      this.showNavIcon = false;   } else {
+      this.drawer = null;
+      this.showNavIcon = true;
     }
   },
+  mounted() {
+    if (LoginData.loginFlag == 0) {
+      document.getElementById('nav').style.display = 'none';
+    }
+  }
 };
 </script>
 
