@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav id="nav">
     <v-snackbar v-model="snackbar" timeout="4000" top color="indigo">
       <span>Project has been already added.</span>
       <v-btn elevation="0" color="indigo white--text" @click="snackbar = false">Close</v-btn>
@@ -75,7 +75,7 @@ export default {
   data() {
     return {
       drawer: null,
-      showNavIcon: null,
+      showNavIcon: true,
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/" },
         { icon: "folder", text: "Projects", route: "/projects" },
@@ -84,14 +84,33 @@ export default {
       snackbar: false
     };
   },
+  beforeCreate() {
+    //if (LoginData.loginFlag == 0) {
+    //  console.log(document.getElementById('nav'));
+    //}
+  },
   created() {
+    //if (LoginData.loginFlag == 0) {
+    //  console.log(document.getElementById('nav'));
+    //}
+    //if (LoginData.loginFlag == 0) {
+    //  this.drawer = false;
+    //  this.showNavIcon = false;
+    //} else {
+    //  this.drawer = null;
+    //  this.showNavIcon = true;
+    //}
+  },
+  updated() {
     if (LoginData.loginFlag == 0) {
-      this.drawer = false;
-      this.showNavIcon = false;
-    } else {
-      this.drawer = null;
-      this.showNavIcon = true;
+      document.getElementById("nav").class = "hide";
     }
-  }
+  },
 };
 </script>
+
+<style>
+  .hide {
+    display: none !important;
+  }
+</style>

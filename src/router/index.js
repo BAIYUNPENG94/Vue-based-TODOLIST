@@ -7,6 +7,7 @@ import Calendar from '../views/Calendar.vue'
 import Projects from '../views/Projects.vue'
 import Team from '../views/Team.vue'
 import Test from '../views/Test.vue'
+import PopCreate from '../components/PopCreate.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     component: LoginPage
+  },
+  {
+    path: '/create',
+    name: 'Create',
+    component: PopCreate
   },
 ]
 

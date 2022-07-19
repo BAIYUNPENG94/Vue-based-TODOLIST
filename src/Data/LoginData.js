@@ -1,3 +1,3 @@
 module.exports = {
-	loginFlag: 1,
+	loginFlag: 0,
 }

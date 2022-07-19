@@ -1,9 +1,5 @@
 <template>
-  <v-dialog width="400" v-model="dialog">
-    <template v-slot:activator="{ on }">
-      <v-btn elevation="5" class="success" v-on="on">CreateAccount</v-btn>
-    </template>
-    <v-card>
+    <v-card max-width="400">
       <v-card-title class="headline grey lighten-2" primary-title>Create Account</v-card-title>
       <v-card-text>
         <v-form ref="form">
@@ -74,7 +70,6 @@
         </v-form>
       </v-card-text>
     </v-card>
-  </v-dialog>
 </template>
 
 <script>
